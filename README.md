@@ -47,38 +47,88 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 4-bit Count Down Counter
 ### Procedure
 /* write all the steps invloved */
+#### STEP 1:
+ Create a new project in Quartus2 software .
+ Exp-7-Synchornous-counters-/README.md at main · Nemaleshwar/Exp-7-Synchornous-counters
+#### STEP 2:
+ Name the project as uc for upcounter and dc for down counter.
+####  STEP 3:
+ Create a new verilog hdl file in the project file.
+####  STEP 4:
+ Name the module declare as dc and uc for down counter and upcounter.
+#### STEP 5:
+ Within the module declare input and output variables.
+ #### STEP 6:
+ Create a loop using if-else with condition parameter as reset.
+#### STEP 7:
+ End the loop.
+#### STEP 8:
+ End the module
+ 
 
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: NATARAJ KUMARAN S
+RegisterNumber: 23003973
 */
+#### UP COUNTER
+```verilogcode
+Module upcounter(clk,a);
+input clk;
+output reg[3:0];
+always @(posedge clk)
+begin
+a[3]=(a[2]&a[1]&a[0])^a[3];
+a[2]=(a[1]&a[0])^a[2];
+a[1]=(a[0]^a[1]);
+a[0]= ^a[0];
+end
+endmodule
+```
+#### DOWN COUNTER
+```verilogcode
+Module downcounter(clk,a);
+input clk;
+output reg[3:0]a;
+always @(posedge clk)
+begin
+a[3]=(~a[2]&~a[1]&~a[0])^a[3];
+a[2]=(~a[1]&~a[0])^a[2];
+a[1]=(~a[0]^a[1]);
+a[0]=1^a[0];
+end
+endmodule
+```
+
+### RTL LOGIC UP COUNTER AND DOWN COUNTER 
+#### UP COUNTER
+![Screenshot 2024-01-02 183500](https://github.com/nataraj26/Exp-7-Synchornous-counters-/assets/147514615/d2601a60-73fd-47f1-8641-939057a8c533)
+#### DOWN COUNTER
+![Screenshot 2024-01-02 183525](https://github.com/nataraj26/Exp-7-Synchornous-counters-/assets/147514615/bc97a704-e7dc-4677-800f-33f55579ece3)
 
 
+### TIMING DIGRAMS FOR COUNTER 
+#### UP COUNTER
+![Screenshot 2024-01-02 183542](https://github.com/nataraj26/Exp-7-Synchornous-counters-/assets/147514615/b175eb68-b54a-46fb-b4c8-daffe3e52fd5)
 
+#### DOWN COUNTER
+![Screenshot 2024-01-02 183602](https://github.com/nataraj26/Exp-7-Synchornous-counters-/assets/147514615/d047c5d1-dc7b-4635-bfa2-92858b697d80)
 
-
-
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
-
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS FOR COUNTER  
 
 
 
 
 
 ### TRUTH TABLE 
+#### UP COUNTER
+![Screenshot 2024-01-02 183625](https://github.com/nataraj26/Exp-7-Synchornous-counters-/assets/147514615/0e74ba7f-62f8-4afa-934e-fd8f5abf75b2)
+
+
+#### DOWN COUNTER
+![Screenshot 2024-01-02 183653](https://github.com/nataraj26/Exp-7-Synchornous-counters-/assets/147514615/4a57f299-ef35-40da-b0ca-1cba69db7d55)
 
 
 
@@ -86,3 +136,4 @@ RegisterNumber:
 
 
 ### RESULTS 
+The 4 bit up and down counters has been implemented and validated the functionality.
